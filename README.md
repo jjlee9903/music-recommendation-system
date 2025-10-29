@@ -85,3 +85,8 @@
 
 이정재 — Skip-Gram Negative Sampling Model development, Web Application Development, Web Part Leader
 
+### Dataset
+Dataset source: [Melon Playlist Dataset](https://arena.kakao.com/melon_dataset) 
+(Ferraro et al., *ICASSP 2021*)
+
+Official introduction: [Kakao Tech Blog – Melon Playlist Dataset](https://tech.kakao.com/posts/520) 
