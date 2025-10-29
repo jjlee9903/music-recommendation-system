@@ -3,11 +3,7 @@ from typing import Dict, Any, List, Tuple
 
 def load_tag_embeddings(path: str) -> dict[str, np.ndarray]:
     with open(path, "rb") as f:
-        d = pickle.load(f)  # {tag: np.ndarray(128,)}
-    # 혹시 정규화 안 돼 있으면 아래 3줄 주석 해제
-    # for k, v in d.items():
-    #     v = v.astype(np.float32)
-    #     d[k] = v / (np.linalg.norm(v) + 1e-12)
+        d = pickle.load(f)  
     return d
 
 def load_word_to_idx(path: str) -> dict[str, int]:

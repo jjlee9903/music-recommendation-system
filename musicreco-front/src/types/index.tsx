@@ -1,4 +1,4 @@
-export type ViewType = "login" | "signup" | "dashboard" | "playlist";
+export type ViewType = "login" | "signup" | "dashboard" | "playlist" | "library";
 
 export interface ApiRecItem { id: number; title: string; artists: string[]; genres: string[]; score: number; }
 export interface Song { id: number; title: string; artist: string; album: string; genre: string; }

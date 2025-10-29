@@ -1,26 +1,64 @@
-// SignupView.tsx
 import { useState } from "react";
-import logo from "@/assets/musicreco.png";
 
-export default function SignupView({ onSignup, goLogin }:{ onSignup:(name:string,email:string)=>void; goLogin:()=>void }) {
-  const [name, setName] = useState(""); const [email, setEmail] = useState(""); const [password, setPassword] = useState("");
+export default function SignupView({
+  onSignup,
+  goLogin,
+}: {
+  onSignup: (name: string, email: string, password: string) => void;
+  goLogin: () => void;
+}) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const submit = () => {
+    if (!name || !email || !password) {
+      alert("모든 정보를 입력해주세요.");
+      return;
+    }
+    onSignup(name, email, password);
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8">
-        <div className="text-center mb-8">
-          <img src={logo} className="mx-auto h-20 w-20 object-contain mb-4" />
-          <h1 className="text-3xl font-bold text-gray-800">MusicReco</h1>
-          <p className="text-gray-600 mt-2">새로운 계정을 만들어보세요</p>
-        </div>
-        <div className="space-y-4">
-          <input type="text" placeholder="이름" value={name} onChange={(e)=>setName(e.target.value)} className="w-full p-3 border rounded-lg"/>
-          <input type="email" placeholder="이메일" value={email} onChange={(e)=>setEmail(e.target.value)} className="w-full p-3 border rounded-lg"/>
-          <input type="password" placeholder="비밀번호" value={password} onChange={(e)=>setPassword(e.target.value)} className="w-full p-3 border rounded-lg"/>
-          <button onClick={()=>onSignup(name,email)} className="w-full bg-green-500 text-white p-3 rounded-lg hover:bg-green-600">가입하기</button>
-        </div>
-        <div className="text-center mt-6">
-          <button onClick={goLogin} className="text-green-500 hover:text-green-600">이미 계정이 있으신가요? 로그인</button>
-        </div>
+    <div className="min-h-screen bg-gradient-to-br from-green-400 to-green-600 flex flex-col items-center justify-center p-4">
+      <div className="bg-white rounded-xl shadow-lg p-8 w-full max-w-md">
+        <h1 className="text-2xl font-bold text-center mb-6 text-gray-800">
+          회원가입
+        </h1>
+
+        <input
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="이름"
+          className="w-full p-3 mb-3 border rounded-lg"
+        />
+        <input
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="이메일"
+          className="w-full p-3 mb-3 border rounded-lg"
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="비밀번호"
+          className="w-full p-3 mb-6 border rounded-lg"
+        />
+
+        <button
+          onClick={submit}
+          className="w-full py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition"
+        >
+          가입하기
+        </button>
+
+        <button
+          onClick={goLogin}
+          className="w-full py-2 mt-3 text-gray-600 hover:text-gray-800 text-sm"
+        >
+          이미 계정이 있으신가요? 로그인
+        </button>
       </div>
     </div>
   );
